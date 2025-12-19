@@ -1,112 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Melbourne Brown – Portfolio</title>
+
     <style>
-      body {
-        margin: 0;
-        font-family: system-ui, sans-serif;
-        background: #0f172a;
-        color: #e2e8f0;
-      }
+        /* ------------------------------
+           GLOBAL STYLES
+        ------------------------------ */
+        body {
+            margin: 0;
+            font-family: system-ui, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
 
-      header {
-        text-align: center;
-        padding: 4rem 1rem;
-        background: linear-gradient(135deg, #1e3a8a, #0f172a);
-      }
+        h1, h2, h3 {
+            margin: 0;
+        }
 
-      header h1 {
-        font-size: 3rem;
-        margin-bottom: 0.5rem;
-      }
+        a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
 
-      header p {
-        font-size: 1.2rem;
-        color: #cbd5e1;
-      }
+        a:hover {
+            color: #bfdbfe;
+        }
 
-      main {
-        max-width: 900px;
-        margin: 2rem auto;
-        padding: 0 1rem;
-      }
+        /* ------------------------------
+           FADE-IN ANIMATIONS
+        ------------------------------ */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.9s ease-out forwards;
+        }
 
-      section {
-        background: #1e293b;
-        padding: 1.5rem;
-        border-radius: 0.75rem;
-        margin-bottom: 2rem;
-        border: 1px solid #334155;
-      }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
 
-      h2 {
-        color: #93c5fd;
-        margin-bottom: 0.75rem;
-      }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-      a {
-        color: #60a5fa;
-      }
+        /* ------------------------------
+           HEADER / HERO
+        ------------------------------ */
+        header {
+            text-align: center;
+            padding: 5rem 1rem;
+            background: linear-gradient(135deg, #1e3a8a, #0f172a);
+        }
 
-      a:hover {
-        color: #bfdbfe;
-      }
+        header h1 {
+            font-size: 3rem;
+        }
 
-      footer {
-        text-align: center;
-        padding: 2rem;
-        color: #64748b;
-        border-top: 1px solid #334155;
-        margin-top: 3rem;
-      }
+        header p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            margin-top: 0.5rem;
+        }
+
+        .resume-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            background: #3b82f6;
+            color: white;
+            border-radius: 0.5rem;
+            transition: background 0.3s;
+        }
+
+        .resume-btn:hover {
+            background: #60a5fa;
+        }
+
+        /* ------------------------------
+           MAIN CONTENT
+        ------------------------------ */
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        section {
+            background: #1e293b;
+            padding: 1.75rem;
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+            border: 1px solid #334155;
+        }
+
+        h2 {
+            color: #93c5fd;
+            margin-bottom: 1rem;
+        }
+
+        /* ------------------------------
+           SOCIAL ICONS
+        ------------------------------ */
+        .socials {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .socials svg {
+            width: 28px;
+            height: 28px;
+            fill: #60a5fa;
+            transition: transform 0.3s, fill 0.3s;
+        }
+
+        .socials svg:hover {
+            fill: #bfdbfe;
+            transform: translateY(-3px);
+        }
+
+        /* ------------------------------
+           HIRE ME SECTION
+        ------------------------------ */
+        .hire-grid {
+            display: grid;
+            gap: 1.25rem;
+        }
+
+        @media (min-width: 700px) {
+            .hire-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .hire-card {
+            background: #0f172a;
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            border: 1px solid #334155;
+            transition: transform 0.3s;
+        }
+
+        .hire-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* ------------------------------
+           CONTACT FORM
+        ------------------------------ */
+        form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        input, textarea {
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        button {
+            padding: 0.75rem;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #60a5fa;
+        }
+
+        /* ------------------------------
+           FOOTER
+        ------------------------------ */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            margin-top: 3rem;
+        }
     </style>
-  </head>
-  <body>
-    <header>
-      <h1>Melbourne Brown</h1>
-      <p>Engineer • Architect • Mentor</p>
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <header class="fade-in">
+        <h1>Melbourne Brown</h1>
+        <p>Engineer • Architect • Mentor</p>
+
+        <a class="resume-btn fade-in delay-1" href="resume.pdf" download>
+            Download Résumé
+        </a>
+
+        <div class="socials fade-in delay-2">
+            <!-- GitHub -->
+            <a href="https://github.com/MQBrown" target="_blank">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 .1.6 2.1 2.9 2.1 1.4 0 2.3-.5 2.8-1-.1-.3-.4-1.2-.4-2.4-3.2.7-4.4-1.4-4.4-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 .1.6 2.1 2.9 2.1 1.4 0 2.3-.5 2.8-1-.1-.3-.4-1.2-.4-2.4 0-1.7.6-2.9 1.5-3.8-.2-.4-.7-1.8.1-3.7 0 0 1.3-.4 4.1 1.5 1.2-.3 2.5-.5 3.8-.5s2.6.2 3.8.5c2.8-1.9 4.1-1.5 4.1-1.5.8 1.9.3 3.3.1 3.7.9.9 1.5 2.1 1.5 3.8 0 1.2-.3 2.1-.4 2.4.5.5 1.4 1 2.8 1 2.3 0 1.9-2 2.9-2.1 0 0 .6-1.1 1.7-1.2 0 0 1.1 0 .1.7 0 0-.7.4-1.2 1.6 0 0-1.2 2.1-4.4 1.4 0 1.2-.3 2.1-.4 2.4.5.5 1.4 1 2.8 1 2.3 0 1.9-2 2.9-2.1 0 0 .6-1.1 1.7-1.2 0 0 1.1 0 .1.7 0 0-.7.4-1.2 1.6 0 0-1.2 2.1-4.4 1.4v2c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.65 18.35.5 12 .5z"/>
+                </svg>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com" target="_blank">
+                <svg viewBox="0 0 24 24">
+                    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-.9 1.8-2.2 3.9-2.2 4.2 0 5 2.8 5 6.5V24h-4v-8.3c0-2 0-4.5-2.7-4.5-2.7 0-3.1 2.1-3.1 4.3V24h-4V8z"/>
+                </svg>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:mqbrown07@live.com">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 13.5L0 6V4l12 7.5L24 4v2zM0 8l12 7.5L24 8v12H0z"/>
+                </svg>
+            </a>
+        </div>
     </header>
 
     <main>
-      <section>
-        <h2>About Me</h2>
-        <p>
-          I build scalable, secure applications and lead engineering teams to
-          deliver high‑impact solutions. This site is powered by GitHub Pages
-          and serves as my personal portfolio.
-        </p>
-      </section>
 
-      <section>
-        <h2>Projects</h2>
-        <p>Explore my work on GitHub:</p>
-        <ul>
-          <li>
-            <a href="https://github.com/MQBrown" target="_blank"
-              >All Repositories</a
-            >
-          </li>
-        </ul>
-      </section>
+        <!-- ABOUT -->
+        <section class="fade-in delay-1">
+            <h2>About Me</h2>
+            <p>
+                I build scalable, secure applications and lead engineering teams to deliver high‑impact solutions.
+                My work spans architecture, API development, cloud systems, and mentoring engineers to grow into leaders.
+            </p>
+        </section>
 
-      <section>
-        <h2>Contact</h2>
-        <p>
-          Email me at:
-          <a href="mailto:mqbrown07@live.com">mqbrown07@live.com</a>
-        </p>
-      </section>
+        <!-- HIRE ME -->
+        <section class="fade-in delay-2">
+            <h2>Hire Me</h2>
+
+            <div class="hire-grid">
+                <div class="hire-card fade-in delay-1">
+                    <h3>Architecture & System Design</h3>
+                    <p>Designing scalable, secure, cloud‑ready systems with clean patterns and long‑term maintainability.</p>
+                </div>
+
+                <div class="hire-card fade-in delay-2">
+                    <h3>API Development</h3>
+                    <p>Building robust APIs in C#, Python, SQL Server, and modern frameworks with best practices.</p>
+                </div>
+
+                <div class="hire-card fade-in delay-3">
+                    <h3>Leadership & Mentorship</h3>
+                    <p>Guiding engineers, improving processes, and elevating teams through coaching and structure.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT FORM -->
+        <section class="fade-in delay-3">
+            <h2>Contact Me</h2>
+
+            <form action="https://formsubmit.co/mqbrown07@live.com" method="POST">
+                <input type="hidden" name="_captcha" value="false">
+
+                <input type="text" name="name" placeholder="Your Name" required />
+                <input type="email" name="email" placeholder="Your Email" required />
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+
     </main>
 
     <footer>
-      © <span id="year"></span> Melbourne Brown — Hosted on GitHub Pages
+        © <span id="year"></span> Melbourne Brown — Hosted on GitHub Pages
     </footer>
 
     <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
+        document.getElementById("year").textContent = new Date().getFullYear();
     </script>
-  </body>
+
+</body>
 </html>
