@@ -5,55 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Melbourne Brown – Portfolio</title>
     <style>
-      /* Simple reset */
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
       body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
+        margin: 0;
+        font-family: system-ui, sans-serif;
         background: #0f172a;
-        color: #e5e7eb;
-        line-height: 1.6;
+        color: #e2e8f0;
       }
 
       header {
-        padding: 2.5rem 1.5rem;
         text-align: center;
-        background: radial-gradient(circle at top, #1d4ed8, #020617);
+        padding: 4rem 1rem;
+        background: linear-gradient(135deg, #1e3a8a, #0f172a);
       }
 
       header h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
         margin-bottom: 0.5rem;
       }
 
       header p {
-        font-size: 1.1rem;
-        color: #cbd5f5;
+        font-size: 1.2rem;
+        color: #cbd5e1;
       }
 
       main {
         max-width: 900px;
-        margin: 0 auto;
-        padding: 2rem 1.5rem 3rem;
+        margin: 2rem auto;
+        padding: 0 1rem;
       }
 
       section {
-        margin-bottom: 2rem;
+        background: #1e293b;
         padding: 1.5rem;
-        background: #020617;
         border-radius: 0.75rem;
-        border: 1px solid #1f2937;
+        margin-bottom: 2rem;
+        border: 1px solid #334155;
       }
 
-      section h2 {
-        margin-bottom: 0.75rem;
-        font-size: 1.4rem;
+      h2 {
         color: #93c5fd;
+        margin-bottom: 0.75rem;
       }
 
       a {
@@ -64,103 +55,57 @@
         color: #bfdbfe;
       }
 
-      ul {
-        list-style: disc;
-        padding-left: 1.25rem;
-        margin-top: 0.5rem;
-      }
-
-      .projects-list li {
-        margin-bottom: 0.35rem;
-      }
-
       footer {
         text-align: center;
-        padding: 1.5rem;
-        border-top: 1px solid #1f2937;
-        color: #6b7280;
-        font-size: 0.9rem;
-      }
-
-      .tag {
-        display: inline-block;
-        font-size: 0.75rem;
-        padding: 0.1rem 0.45rem;
-        border-radius: 999px;
-        border: 1px solid #334155;
-        color: #9ca3af;
-        margin-left: 0.35rem;
-      }
-
-      @media (min-width: 768px) {
-        header h1 {
-          font-size: 3rem;
-        }
-
-        main {
-          padding-top: 2.5rem;
-        }
+        padding: 2rem;
+        color: #64748b;
+        border-top: 1px solid #334155;
+        margin-top: 3rem;
       }
     </style>
   </head>
   <body>
     <header>
       <h1>Melbourne Brown</h1>
-      <p>Engineer • Builder • Mentor</p>
+      <p>Engineer • Architect • Mentor</p>
     </header>
 
     <main>
       <section>
-        <h2>About</h2>
+        <h2>About Me</h2>
         <p>
-          I build scalable, secure applications and love turning complex
-          requirements into clean, modular systems. This page is hosted directly
-          from my GitHub repository.
+          I build scalable, secure applications and lead engineering teams to
+          deliver high‑impact solutions. This site is powered by GitHub Pages
+          and serves as my personal portfolio.
         </p>
       </section>
 
       <section>
         <h2>Projects</h2>
-        <p>Here are some of my repositories on GitHub:</p>
-        <ul class="projects-list">
+        <p>Explore my work on GitHub:</p>
+        <ul>
           <li>
-            <a href="https://github.com/MQBrown" target="_blank" rel="noopener">
-              View all my repositories on GitHub
-            </a>
-            <span class="tag">GitHub</span>
+            <a href="https://github.com/MQBrown" target="_blank"
+              >All Repositories</a
+            >
           </li>
-          <!-- You can add specific repos like this: -->
-          <!--
-                <li>
-                    <a href="https://github.com/MQBrown/your-repo-name" target="_blank" rel="noopener">
-                        your-repo-name
-                    </a>
-                    <span class="tag">C# / .NET</span>
-                </li>
-                -->
         </ul>
       </section>
 
       <section>
         <h2>Contact</h2>
         <p>
-          You can reach me via GitHub:
-          <a href="https://github.com/MQBrown" target="_blank" rel="noopener"
-            >github.com/MQBrown</a
-          >
+          Email me at:
+          <a href="mailto:mqbrown07@live.com">mqbrown07@live.com</a>
         </p>
       </section>
     </main>
 
     <footer>
-      <p>
-        © <span id="year"></span> Melbourne Brown. Built with HTML &amp; CSS,
-        hosted on GitHub Pages.
-      </p>
+      © <span id="year"></span> Melbourne Brown — Hosted on GitHub Pages
     </footer>
 
     <script>
-      // Set current year in footer
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
   </body>
