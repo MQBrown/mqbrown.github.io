@@ -17,7 +17,7 @@ jobs:
 
       - name: Deploy
         run: |
-          git clone https://github.com/mqbrown/mqbrown.github.io.git
+          git clone https://github.com/MQBrown/mqbrown.github.io.git
           cd mqbrown.github.io
 
           cp -r ../* .
@@ -28,4 +28,4 @@ jobs:
           git add .
           git commit -m "deploy" || echo "No changes to commit"
 
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/mqbrown/mqbrown.github.io.git
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/MQBrown/mqbrown.github.io.git
