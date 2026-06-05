@@ -60,8 +60,6 @@ body {
     color var(--transition-slow);
 }
 
-/* Layout */
-
 .container {
   width: 100%;
   max-width: 1080px;
@@ -510,6 +508,72 @@ body {
   }
 }
 
+/* GitHub Activity */
+
+.github-activity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.6rem;
+  margin-top: 1.6rem;
+}
+
+.github-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: 1.4rem 1.2rem;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.github-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 50px rgba(15, 23, 42, 0.8);
+}
+
+.github-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+}
+
+.github-img {
+  width: 100%;
+  border-radius: var(--radius-sm);
+}
+
+/* GitHub Dashboard */
+
+.github-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.6rem;
+  margin-top: 1.6rem;
+}
+
+.github-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.6rem 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.github-list li {
+  margin-bottom: 0.5rem;
+}
+
+.github-list a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.github-list a:hover {
+  text-decoration: underline;
+}
+
 /* Insights */
 
 .insights-grid {
@@ -628,46 +692,155 @@ body {
   text-decoration: underline;
 }
 
-.contact-form {
-  background: var(--card-bg);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem 1.4rem;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-soft);
+/* Form */
+
+form {
+  margin-top: 0.6rem;
 }
 
 .form-row {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 0.9rem;
+  margin-bottom: 1rem;
 }
 
 .form-row label {
+  display: block;
   font-size: 0.85rem;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.3rem;
 }
 
 .form-row input,
 .form-row textarea {
+  width: 100%;
+  padding: 0.55rem 0.6rem;
   border-radius: var(--radius-sm);
   border: 1px solid rgba(148, 163, 184, 0.6);
   background: rgba(15, 23, 42, 0.9);
   color: var(--text);
-  padding: 0.5rem 0.6rem;
   font-size: 0.9rem;
-  font-family: inherit;
+  outline: none;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast);
+}
+
+:root[data-theme="light"] .form-row input,
+:root[data-theme="light"] .form-row textarea {
+  background: #ffffff;
 }
 
 .form-row input:focus,
 .form-row textarea:focus {
-  outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 0 1px var(--accent-soft);
 }
 
-.form-note {
-  margin-top: 0.6rem;
+.error-msg {
+  display: block;
+  margin-top: 0.25rem;
   font-size: 0.8rem;
+  color: #f97373;
+  min-height: 0.9rem;
+}
+
+.form-row.invalid input,
+.form-row.invalid textarea {
+  border-color: #f97373;
+  box-shadow: 0 0 0 1px rgba(248, 113, 113, 0.25);
+}
+
+/* Char count */
+
+.char-count {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+/* Spinner */
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 2px solid rgba(249, 250, 251, 0.4);
+  border-top-color: #f9fafb;
+  animation: spin 0.7s linear infinite;
+  margin-left: 0.4rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Toast */
+
+.toast {
+  position: fixed;
+  bottom: 1.4rem;
+  right: 1.4rem;
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius-md);
+  background: rgba(15, 23, 42, 0.95);
+  color: #f9fafb;
+  font-size: 0.85rem;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+  z-index: 30;
+}
+
+.toast.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Modal */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+  z-index: 40;
+}
+
+.modal.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem 1.5rem;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  max-width: 360px;
+  width: 100%;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+}
+
+.modal-content p {
+  margin-top: 0;
+  margin-bottom: 1rem;
   color: var(--text-muted);
 }
 
@@ -676,18 +849,19 @@ body {
 .site-footer {
   border-top: 1px solid rgba(31, 41, 55, 0.7);
   padding: 1.2rem 0;
-  background: rgba(15, 23, 42, 0.95);
+  margin-top: 2rem;
+  background: radial-gradient(circle at bottom, #020617, var(--bg));
 }
 
 .footer-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
 }
 
-/* Animations: fade-in on scroll */
+/* Fade-in */
 
 .fade-in {
   opacity: 0;
@@ -705,18 +879,26 @@ body {
 /* Responsive */
 
 @media (max-width: 900px) {
-  .hero-inner,
-  .two-column,
+  .hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .two-column {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .contact-inner {
     grid-template-columns: minmax(0, 1fr);
   }
 
   .header-inner {
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
   }
 
   .nav {
-    display: none;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
 }
 
@@ -729,47 +911,12 @@ body {
     font-size: 2rem;
   }
 
-  .hero-card-inner {
-    margin-top: 1.4rem;
+  .container {
+    padding: 0 1.1rem;
   }
-}
 
-/* GitHub theme-aware images */
-#gh-light-mode-only {
-  display: none;
-}
-
-:root[data-theme="light"] #gh-dark-mode-only {
-  display: none;
-}
-
-:root[data-theme="light"] #gh-light-mode-only {
-  display: block;
-}
-.github-dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.6rem;
-  margin-top: 1.6rem;
-}
-
-.github-list {
-  list-style: none;
-  padding: 0;
-  margin: 0.6rem 0 0;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.github-list li {
-  margin-bottom: 0.5rem;
-}
-
-.github-list a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.github-list a:hover {
-  text-decoration: underline;
+  .footer-inner {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
 }
