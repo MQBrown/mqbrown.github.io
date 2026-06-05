@@ -1,11 +1,13 @@
 
 name: Deploy Site
 
-on: [push]
+on:
+  push:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -13,12 +15,19 @@ jobs:
         run: echo "Add your build step here"
 
       - name: Deploy
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/mqbrown/mqbrown.github.io.git
-          cp -r ./* mqbrown.github.io/
+          git clone https://github.com/mqbrown/mqbrown.github.io.git
           cd mqbrown.github.io
+
           git config user.name "github-actions"
           git config user.email "actions@github.com"
+
+          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/mqbrown/mqbrown.github.io.git
+
+          cp -r ../* .
+
           git add .
           git commit -m "deploy" || echo "No changes to commit"
           git push
