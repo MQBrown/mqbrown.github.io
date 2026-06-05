@@ -14,18 +14,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Deploy
         run: |
           git clone https://github.com/MQBrown/mqbrown.github.io.git
           cd mqbrown.github.io
-
+      
           cp -r ../* .
-
+      
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-
+      
           git add .
           git commit -m "deploy" || echo "No changes to commit"
-
+      
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/MQBrown/mqbrown.github.io.git
