@@ -14,7 +14,7 @@ jobs:
 
       - name: Deploy
         run: |
-          git clone https://${{ secrets.GH_TOKEN }}@github.com/mqbrown/mqbrown.github.io.git
+          git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/mqbrown/mqbrown.github.io.git
           cp -r ./* mqbrown.github.io/
           cd mqbrown.github.io
           git config user.name "github-actions"
