@@ -2,6 +2,9 @@ name: Deploy Site
 
 on:
   push:
+    paths:
+      - 'index.html'
+      - 'styles.css'
 
 jobs:
   deploy:
@@ -19,10 +22,10 @@ jobs:
           git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/MQBrown/mqbrown.github.io.git
           cd mqbrown.github.io
 
-          # Remove existing files in public repo
+          # Remove old files
           rm -rf *
 
-          # Copy only your site files (adjust if you add more later)
+          # Copy only your site files
           cp -r ../index.html .
           cp -r ../styles.css .
 
