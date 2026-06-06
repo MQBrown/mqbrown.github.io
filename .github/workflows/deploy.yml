@@ -14,16 +14,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy only site folder
+      - name: Deploy clean site
         run: |
           git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/MQBrown/mqbrown.github.io.git
           cd mqbrown.github.io
 
-          # Remove old files
+          # Remove existing files in public repo
           rm -rf *
 
-          # Copy ONLY site files
-          cp -r ../site/* .
+          # Copy only your site files (adjust if you add more later)
+          cp -r ../index.html .
+          cp -r ../styles.css .
 
           git config user.name "github-actions"
           git config user.email "actions@github.com"
